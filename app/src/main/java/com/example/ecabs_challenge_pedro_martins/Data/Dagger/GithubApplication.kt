@@ -6,5 +6,6 @@ class GithubApplication : Application() {
 
     val appComponent: AppComponent by lazy {
         DaggerAppComponent.create()
+
     }
 }

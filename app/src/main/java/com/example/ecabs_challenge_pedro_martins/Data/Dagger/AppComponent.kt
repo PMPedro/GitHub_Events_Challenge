@@ -2,6 +2,8 @@ package com.example.ecabs_challenge_pedro_martins.Data.Dagger
 
 import com.example.ecabs_challenge_pedro_martins.Data.Api.NetworkModule
 import com.example.ecabs_challenge_pedro_martins.MainActivity
+import com.example.ecabs_challenge_pedro_martins.ViewModel.EventDetailViewModelFactory
+import com.example.ecabs_challenge_pedro_martins.ViewModel.ListEventsViewModelFactory
 import dagger.Component
 import javax.inject.Singleton
 
@@ -14,4 +16,10 @@ import javax.inject.Singleton
 interface AppComponent {
 
     fun inject(activity: MainActivity)
+
+    fun viewModelFactory(): ListEventsViewModelFactory
+
+    fun eventDetailViewModelFactory(): EventDetailViewModelFactory
+
+
 }

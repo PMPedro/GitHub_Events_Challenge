@@ -4,44 +4,52 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.rememberNavController
+import com.example.ecabs_challenge_pedro_martins.Data.Dagger.GithubApplication
+import com.example.ecabs_challenge_pedro_martins.Navigation.NavigationGraph
+import com.example.ecabs_challenge_pedro_martins.ViewModel.EventDetailViewModel
+import com.example.ecabs_challenge_pedro_martins.ViewModel.EventDetailViewModelFactory
+import com.example.ecabs_challenge_pedro_martins.ViewModel.ListEventsViewModel
+import com.example.ecabs_challenge_pedro_martins.ViewModel.ListEventsViewModelFactory
 import com.example.ecabs_challenge_pedro_martins.ui.theme.ECabs_Challenge_PedroMartinsTheme
+import javax.inject.Inject
 
 class MainActivity : ComponentActivity() {
+    @Inject lateinit var listEventsViewModelFactory: ListEventsViewModelFactory
+    @Inject lateinit var eventDetailViewModelFactory: EventDetailViewModelFactory
+
+    private val listEventsViewModel by viewModels<ListEventsViewModel> {
+        listEventsViewModelFactory
+    }
+    private val eventsDetailViewModel by viewModels<EventDetailViewModel> {
+        eventDetailViewModelFactory
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        (application as GithubApplication).appComponent.inject(this)
+
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
+            val navController = rememberNavController()
             ECabs_Challenge_PedroMartinsTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                ) {
+                    NavigationGraph(
+                        navController = navController ,
+                        listEventsViewModel = listEventsViewModel,
+                        eventsViewModel = eventsDetailViewModel
+
                     )
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ECabs_Challenge_PedroMartinsTheme {
-        Greeting("Android")
     }
 }
