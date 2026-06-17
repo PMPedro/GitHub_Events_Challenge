@@ -49,3 +49,6 @@ An Android application built for the eCabs Android Developer challenge. The app 
 ## A Note on AI Usage
 
 AI assistance was used for research, generating minor secondary files such as the color scheme, and reviewing the final implementation. All code was written, understood, and validated by me.
+
+> **Note:** The GitHub Events API has a rate limit of 60 requests/hour for unauthenticated calls.
+> If events fail to load during testing, this is likely the cause. Waiting a few minutes should resolve it.
