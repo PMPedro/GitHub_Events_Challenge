@@ -1,6 +1,7 @@
-# eCabs Android Challenge — Pedro Martins
+# GitHub_Events_Challenge
 
-An Android application built for the eCabs Android Developer challenge. The app consumes the public GitHub Events API and displays a live list of events, with a dedicated detail screen for each one.
+
+An Android application buit as an Android Developer challenge. The app consumes the public GitHub Events API and displays a live list of events, with a dedicated detail screen for each one.
 
 ---
 
@@ -44,11 +45,4 @@ An Android application built for the eCabs Android Developer challenge. The app 
 - [ ] Offline caching of events
 - [ ] More granular error and empty state handling
 
----
 
-## A Note on AI Usage
-
-AI assistance was used for research, generating minor secondary files such as the color scheme, and reviewing the final implementation. All code was written, understood, and validated by me.
-
-> **Note:** The GitHub Events API has a rate limit of 60 requests/hour for unauthenticated calls.
-> If events fail to load during testing, this is likely the cause. Waiting a few minutes should resolve it.
