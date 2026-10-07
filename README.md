@@ -1,7 +1,6 @@
-# GitHub_Events_Challenge
+# GitHub_Events_Android
 
-
-An Android application buit as an Android Developer challenge. The app consumes the public GitHub Events API and displays a live list of events, with a dedicated detail screen for each one.
+The app consumes the public GitHub Events API and displays a live list of events, with a dedicated detail screen for each one.
 
 ---
 
